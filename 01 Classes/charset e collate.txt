@@ -1,0 +1,10 @@
+Charset
+O Charset define o conjunto de caracteres que você irá utilizar para armazenar dados em forma de texto, onde cada caractere recebe um número. Um exemplo bem comum é a tabela ASCII que possui apenas 256 caracteres. Se você indicar que o charset do seu sistema é ASCII, isto quer dizer que seu sistema só irá reconhecer os 256 caracteres contidos nele. Por isso às vezes vemos textos sem acentuação na internet, com uma interrogação no lugar do caractere, pois o charset da página não contém o caractere que deveria ser exibido. Atualmente, o charset padrão é o UTF-8, que possibilita até 1.114.112 caracteres, o que permite exibir caracteres em qualquer idioma, inclusive Chinês e Japonês.
+
+Collation
+Collation é o termo utilizado para definir o conjunto de regras que o servidor irá utilizar para ordenação e comparação entre textos, ou seja, como será o funcionamento dos operadores =, >, <, order by, etc. Por exemplo, dependendo da Collation configurada, o sistema irá ordenar o caractere 'ö' entre os caracteres ‘o’ e ‘p’, usando outra collation, esse caractere pode ser ordenado em outra posição. Por isso pode dar conflito ao fazer consultas que relacionam tabelas com collations diferentes. Além disso, a collation também define se o sistema irá diferenciar caracteres acentuados ou se será case sensitive, por exemplo a collation Latin1_General_CI_AS define que o sistema deverá tratar os caracteres como case insensitive (CI) e acentue sensitive (AS). Exemplos:
+
+latin1_general_ci: Não há distinção entre letras maiúsculas e minúsculas. Buscando por “teste”, registros como “Teste” ou “TESTE” serão retornados.
+latin1_general_cs: Distingue letras maiúsculas e minúsculas. Buscando por “teste” somente retornará “teste”. Opções como “Teste” e “TESTE” não serão retornadas.
+latin1_swedish_ci: Não distingue letras minúsculas e maiúsculas e nem caracteres acentuados e com cedilha, ou seja, o registro que contém a palavra “Intuição” será retornado quando houver uma procura pela palavra “intúicao”
+Mesmo que você troque o collation do banco de dados os objetos previamente criados não terão o collation alterado, para isso você terá que recriar o objeto.
