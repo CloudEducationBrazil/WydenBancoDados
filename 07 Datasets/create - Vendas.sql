@@ -1,3 +1,5 @@
+create database vendas;
+
 use vendas; 
 
 SET autocommit=0;

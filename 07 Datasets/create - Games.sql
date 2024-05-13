@@ -1,3 +1,7 @@
+create database games;
+
+use games;
+
 create table tb_belonging (position integer, game_id bigint not null, list_id bigint not null, primary key (game_id, list_id));
 create table tb_game (game_year integer, score float(53), id bigserial not null, genre varchar(255), img_url varchar(255), long_description TEXT, platforms varchar(255), short_description TEXT, title varchar(255), primary key (id));
 create table tb_game_list (id bigserial not null, name varchar(255), primary key (id));
